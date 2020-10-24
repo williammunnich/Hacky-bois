@@ -21,7 +21,16 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+
 def create_session(): pass
+
+
+def check_valid_user(username, password):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('SELECT COUNT(*) FROM users where email=? and password=?', (username, password))
+    return cursor.fetchall()
+
 
 @app.route('/')
 def main_page():
@@ -33,6 +42,9 @@ def main_page():
 @app.route('/login', methods=['post', 'get'])
 def login():
     if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
         # resp = make_response(redirect(url_for('/')))
         # resp.set_cookie('s_id', )
     else:
@@ -49,8 +61,6 @@ def create_user():
     # todo check if user exists
     cursor = conn.cursor()
     cursor.execute('INSERT INTO users (email, password) values (?,?)')
-
-
 
 
 @app.route('/club/<club_id>')
