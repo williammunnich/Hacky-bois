@@ -16,25 +16,44 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
 
-#search based on tags for offers
-#search through Dashboard offers
+
 
 <body>
 
 
-<h3>Search Offers</h3>
-<form action="http://localhost:8080" method="POST">
-  <input type="text" id="search" name="search">
-  <input type="submit" value="Search">
-  <br><br>
-</form>
 
-<form action="http://localhost:8080" method="POST">
-  <button type="submit" id = "Dashboard" name="Dashboard" value="Dashboard">Dashboard</button>
-  <button type="submit" id = "Offers" name="Offers" value="Offers">Offers</button>
-  <button type="submit" id = "Past Offers" name="Past Offers" value="Past Offers">Past Offers</button>
+  <h3>Search Offers</h3>
+  <form action="http://localhost:8080" method="POST">
+    <input type="text" id="search" name="search">
+    <input type="submit" value="Search">
+    <br><br>
+  </form>
 
-  <br><br>
-</form>
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Dashboard')">Dashboard</button>
+  <form action="http://localhost:8080" method="POST">
 
+    <button type="submit" id = "Offers" name="Offers" value="Offers">Offers</button>
+    <button type="submit" id = "Past Offers" name="Past Offers" value="Past Offers">Past Offers</button>
+
+    <br><br>
+  </form>
+  </div>
+
+  <div id="Dashboard" class="tabcontent">
+    <h3>Dashboard</h3>
+    <form action="http://localhost:8080" method="POST">
+      <button type="submit" id = "Current" name="Current" value="Current">Current</button>
+      <button type="submit" id = "Description" name="Description" value="Description">Description</button>
+      <button type="submit" id = "Stats" name="Stats" value="Stats">Stats</button>
+      <button type="submit" id = "Pending" name="Pending" value="Pending">Pending</button>
+
+      <br><br>
+    </form>
+    <button><a href="club_webpage"> Go to user example page 1 </a></button>
+    <br>
+    <button><a href="club_webpage"> Go to user example page 2 </a></button>
+  </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
