@@ -1,0 +1,17 @@
+set up git and push on here
+set up node to communicate with sql
+basic html template witch can take information
+set up hackathon.cloudcut.team ftp connection and password
+
+
+website
+
+splash page mainpage description and login and new user, companies in proximity?
+logged in, home page user:
+	one club account and all they can see is their own club website, at the top available offers that are relavant under certain keywords, displays critera
+
+
+logged in, home page business:
+	offers
+	ongoing offers
+	what are they offering: funding materials food electronics
