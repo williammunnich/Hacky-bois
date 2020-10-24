@@ -28,7 +28,7 @@ def create_session(): pass
 def check_valid_user(username, password):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute('SELECT COUNT(*) FROM users where email=? and password=?', (username, password))
+    cursor.execute('SELECT user_id FROM users where email=? and password=?', (username, password))
     return cursor.fetchall()
 
 
@@ -44,7 +44,7 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-
+        valid = check_valid_user(email, password)
         # resp = make_response(redirect(url_for('/')))
         # resp.set_cookie('s_id', )
     else:
