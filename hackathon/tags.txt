@@ -1,170 +1,170 @@
-tech
-coding
-computers
-gaming
-business
-communication
-pottery
-fine arts
-art
-music
-theater
-language arts
-anime
-movies
-accounting
-education
-travel
-sports
-engineering
-electrical engineering
-computer engineering
-computer science
-software engineering
-software
-hardware
-biology
-chemistry
-physics
-astronomy
-ecology
-anthropology
-politics
-religion
-religious studies
-teaching
-learning
-choir
-ensemble
-math
-mathematics
-social science
-cooking
-cleaning
-security
-cyber security
-cybersecurity
-dance
-economics
-film
-video
-nursing
-medical
-forensics
-athletics
-test
-radio
-hydrology
-geology
-psychology
-information system
-information technology
-information
-nature
-statistics
-medical technology
-medTech
-research
-law
-pre-law
-human resources
-military
-television
-pop culture
-design
-writing
-journalism
-animation
-music writing
-theory
-modeling
-underwater basket weaving
-maintenance
-mechanical engineering
-calculus
-digital logic
-mapping
-cartagraphy
-fletching
-fishing
-hunting
-farming
-smithing
-event
-election
-quantum
-graphics
-drawing
-sketching
-dining
-restaurant
-cafe
-zoom
-vehicles
-microsoft office
-developing
-front-end
-back-end
-energy
-library
-reading
-meme
-competition
-game
-building
-construction
-sales
-marketing
-product
-ideas
-creativity
-novels
-new
-nu
-prototyping
-festive hackathon
-funding
-money
-monetary
-misc
-church
-group
-arts and crafts
-arts & crafts
-crafts
-surgery
-github
-cloud computing
-cloud
-weather
-meteorology
-space
-science
-rocket science
-no
-yes
-maybe
-love
-calendar
-summer
-autumn
-winter
-spring
-fall
-seasonal
-part-time
-full-time
-jazz
-botany
-animal husbandry
-bathroom
-restroom
-gig
-set
-conceptual
-operating systems
-party
-casual
-extreme
-play
-performance arts
+Tech
+Coding
+Computers
+Gaming
+Business
+Communication
+Pottery
+Fine Arts
+Art
+Music
+Theater
+Language Arts
+Anime
+Movies
+Accounting
+Education
+Travel
+Sports
+Engineering
+Electrical Engineering
+Computer Engineering
+Computer Science
+Software Engineering
+Software
+Hardware
+Biology
+Chemistry
+Physics
+Astronomy
+Ecology
+Anthropology
+Politics
+Religion
+Religious Studies
+Teaching
+Learning
+Choir
+Ensemble
+Math
+Mathematics
+Social Science
+Cooking
+Cleaning
+Security
+Cyber Security
+Cybersecurity
+Dance
+Economics
+Film
+Video
+Nursing
+Medical
+Forensics
+Athletics
+Test
+Radio
+Hydrology
+Geology
+Psychology
+Information System
+Information Technology
+Information
+Nature
+Statistics
+Medical Technology
+Medtech
+Research
+Law
+Pre-Law
+Human Resources
+Military
+Television
+Pop Culture
+Design
+Writing
+Journalism
+Animation
+Music Writing
+Theory
+Modeling
+Underwater Basket Weaving
+Maintenance
+Mechanical Engineering
+Calculus
+Digital Logic
+Mapping
+Cartagraphy
+Fletching
+Fishing
+Hunting
+Farming
+Smithing
+Event
+Election
+Quantum
+Graphics
+Drawing
+Sketching
+Dining
+Restaurant
+Cafe
+Zoom
+Vehicles
+Microsoft Office
+Developing
+Front-End
+Back-End
+Energy
+Library
+Reading
+Meme
+Competition
+Game
+Building
+Construction
+Sales
+Marketing
+Product
+Ideas
+Creativity
+Novels
+New
+Nu
+Prototyping
+Festive Hackathon
+Funding
+Money
+Monetary
+Misc
+Church
+Group
+Arts And Crafts
+Arts & Crafts
+Crafts
+Surgery
+Github
+Cloud Computing
+Cloud
+Weather
+Meteorology
+Space
+Science
+Rocket Science
+No
+Yes
+Maybe
+Love
+Calendar
+Summer
+Autumn
+Winter
+Spring
+Fall
+Seasonal
+Part-Time
+Full-Time
+Jazz
+Botany
+Animal Husbandry
+Bathroom
+Restroom
+Gig
+Set
+Conceptual
+Operating Systems
+Party
+Casual
+Extreme
+Play
+Performance Arts
