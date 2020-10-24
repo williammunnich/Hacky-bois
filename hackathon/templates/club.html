@@ -7,7 +7,7 @@
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <head>
    <title>Hacky Bois</title>
@@ -16,12 +16,11 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
 
-#search based on tags for offers
-#search through all offers
+
 
 <body>
 
-
+<!--
 <h3>Search Offers</h3>
 <form action="http://localhost:8080" method="POST">
   <input type="text" id="search" name="search">
@@ -36,38 +35,39 @@
   <button type="submit" id = "Pending" name="Pending" value="Pending">Pending</button>
   <br><br>
 </form>
+-->
 
-<!--
-<div class="tab">
 
-  <button class="tablinks" onclick="openCity(event, 'All')">All</button>
-  <button class="tablinks" onclick="openCity(event, 'New')">New</button>
-  <button class="tablinks" onclick="openCity(event, 'Recommended')">Recommended</button>
-  <button class="tablinks" onclick="openCity(event, 'Pending')">Pending</button>
+<div class="tab1">
+
+  <button class="tablinks" onclick="openPage1(event, 'All')">All</button>
+  <button class="tab1links" onclick="openPage1(event, 'New')">New</button>
+  <button class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
+  <button class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
 
 </div>
 
 
-<div id="New" class="tabcontent">
+<div id="New" class="tab1content">
   <h3>New</h3>
   <p>This will be filled with the new offers from businesses</p>
 </div>
 
-<div id="Recommended" class="tabcontent">
+<div id="Recommended" class="tab1content">
   <h3>Recommended</h3>
   <p>This will be filled with the recommended offers from businesses</p>
 </div>
 
-<div id="Pending" class="tabcontent">
+<div id="Pending" class="tab1content">
   <h3>Pending</h3>
   <p>This will be filled with pending offers from businesses</p>
 </div>
 
-<div id="All" class="tabcontent">
+<div id="All" class="tab1content">
   <h3>All</h3>
   <p>This will be filled with all the offers from businesses</p>
 </div>
--->
+
 
 
 
