@@ -9,18 +9,40 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<body>
+<body class="">
     <div class="container p-3 my-3 bg-dark text-white">
         <H1>Login</H1>
     </div>
+
     <div class="container">
-        <button type="button" class="btn btn-info btn-dark" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    
+        <form action="/action_page.php" class="needs-validation" novalidate>
+
+            <div class="form-group">
+                <label for="uname" class="pt-3">Email:</label>
+                <input type="text" class="form-control" id="mail" placeholder="Enter username" name="mail" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="container text-right">
+                <button type="button" class="btn btn-info btn-grey  btn-lg right" data-toggle="modal" data-target="#myModal">Register</button>
+                <button type="submit" class="btn btn-dark btn-lg right">Login</button>
+            </div>
+
+        </form>
     </div>
 </body>
 
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
