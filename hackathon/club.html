@@ -1,5 +1,67 @@
 <!doctype html>
 <html lang="en">
 
+<head>
+   <title>Hacky Bois</title>
+   <script src="script/main.js"></script>
+   <style href="style/style.css" rel="stylesheet" type="text/css"></style>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
 #search based on tags for offers
 #search through all offers
+
+<body>
+
+
+<h3>Search Offers</h3>
+<form action="/node_server-extension.js" method="POST">
+  <input type="text" id="search" name="search">
+  <input type="submit" value="Search">
+  <br><br>
+</form>
+
+<form action="/node_server-extension.js" method="POST">
+  <button type="submit" id = "All" name="All" value="All">All</button>
+  <button type="submit" id = "New" name="New" value="New">New</button>
+  <button type="submit" id = "Recommendedl" name="Recommended" value="Recommended">Recommended</button>
+  <button type="submit" id = "Pending" name="Pending" value="Pending">Pending</button>
+  <br><br>
+</form>
+
+<!--
+<div class="tab">
+
+  <button class="tablinks" onclick="openCity(event, 'All')">All</button>
+  <button class="tablinks" onclick="openCity(event, 'New')">New</button>
+  <button class="tablinks" onclick="openCity(event, 'Recommended')">Recommended</button>
+  <button class="tablinks" onclick="openCity(event, 'Pending')">Pending</button>
+
+</div>
+
+
+<div id="New" class="tabcontent">
+  <h3>New</h3>
+  <p>This will be filled with the new offers from businesses</p>
+</div>
+
+<div id="Recommended" class="tabcontent">
+  <h3>Recommended</h3>
+  <p>This will be filled with the recommended offers from businesses</p>
+</div>
+
+<div id="Pending" class="tabcontent">
+  <h3>Pending</h3>
+  <p>This will be filled with pending offers from businesses</p>
+</div>
+
+<div id="All" class="tabcontent">
+  <h3>All</h3>
+  <p>This will be filled with all the offers from businesses</p>
+</div>
+-->
+
+
+
+</body>
+</html>
