@@ -1,0 +1,82 @@
+body {font-family: Arial;}
+
+/* Style the tab1 */
+.tab1 {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab1 */
+.tab1 button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab1 button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tab1link class */
+.tab1 button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab1 content */
+.tab1content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+
+
+
+
+
+
+/* Style the tab1 */
+.tab2 {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab1 */
+.tab2 button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab2 button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tab1link class */
+.tab2 button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab1 content */
+.tab2content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
