@@ -22,10 +22,25 @@ def close_connection(exception):
         db.close()
 
 
-def create_session(): pass
+def open_session(u_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,))
+    value = cursor.fetchone()
+    if not value:
+        cursor.execute('INSERT INTO sessions (user_id, open) VALUES (?, true)', (u_id,))
+    else:
+        cursor.execute('UPDATE sessions SET open=true WHERE user_id=?', (u_id,))
+    return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()
 
 
-def check_valid_user(username, password):
+def close_session(u_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('UPDATE sessions SET open=false WHERE user_id=?', (u_id,))
+
+
+def get_user_id(username, password):
     conn = get_db()
     cursor = conn.cursor()
     cursor.execute('SELECT user_id FROM users where email=? and password=?', (username, password))
@@ -36,7 +51,7 @@ def check_valid_user(username, password):
 def main_page():
     # if user has valid cookie, redirect to main page
     # else redirect to login
-    return
+    return render_template('login.html')
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -44,9 +59,11 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        valid = check_valid_user(email, password)
-        # resp = make_response(redirect(url_for('/')))
-        # resp.set_cookie('s_id', )
+        u_id = get_user_id(email, password)
+        session_id = open_session(u_id)
+
+        resp = make_response(redirect('index.html'))
+        resp.set_cookie('s_id')
     else:
         resp = make_response(render_template('login.html'))
     pass
