@@ -10,6 +10,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- 11564 -->
 <head>
+    <title>Hacky Bois</title>
+    <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
    <title>Hacky Bois</title>
    <script src="../script/main.js"></script>
    <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
@@ -20,9 +24,6 @@ function myFunction(class_name) {
 }
 </script>
  </head>
-
-
-
 <body>
 <div class="image-wrapper">
     <img src=" {{ art_work }}"/>
@@ -85,6 +86,7 @@ function myFunction(class_name) {
     <button class="tab2links" onclick="openPage2(event, 'Description')">Company description</button>
     <button class="tab2links" onclick="openPage2(event, 'Stats')">Stats</button>
     <button class="tab2links" onclick="openPage2(event, 'Pending2')">Pending offers</button>
+</div>
   </div>
 
   <divonclick="myFunction(this)">
@@ -144,6 +146,12 @@ function myFunction(class_name) {
 
   </div>
 
+<div id="Current" class="tab1content">
+  <div style="visibility: hidden;">
+  <div id="Dashboard" class="tab1content">
+
+  </div>
+
   <div id="Current" class="tab1content">
     {% for the_current in currents %}
         <button><a href={{ offers_current_info }}>{{ the_current }}</a></button>
@@ -162,11 +170,12 @@ function myFunction(class_name) {
 
 
 </div>
+<script src={{ url_for('static', filename='script/main.js') }}></script>
+  </div>
 
 
 
-
-
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
