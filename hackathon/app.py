@@ -176,7 +176,7 @@ def create_user():
     else:
         cursor.execute('INSERT INTO users (account_type, email, password) values (?, ?,?)',
                        (ACCOUNT_TYPE[request.form['options']], email, password))
-        cursor.execute('SELECT user_id FROM users where ROWID=?', (cursor.lastrowid, ))
+        cursor.execute('SELECT user_id FROM users where ROWID=?', (cursor.lastrowid,))
         user_id = cursor.fetchone().get('user_id')
         session_id = open_session(user_id)
         conn.commit()
