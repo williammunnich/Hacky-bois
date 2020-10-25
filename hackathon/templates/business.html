@@ -33,7 +33,7 @@
 </div>
 
 <div class="float-left">
-  <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">Offer</button>
+  <button type="button" class="btn btn-info btn-dark btn-lg left" data-toggle="modal" data-target="#business-modal">Offer</button>
 </div>
 
 <h3 class="container w-50 p-3 my-3 bg-dark text-white">ARFA: Animal Rights For America</h3>
@@ -60,11 +60,10 @@
 
 <div id="Current_Offers" class="tab1content">
   <h3>Current Offers</h3>
-
   <button class="btn btn-info"><a href= "club_about.html" style="color:white;">Animal Rights Club: We really need help with networking, and getting funds for a lawyer to go up against Evil Corp's "Kill Animal Mandate". In exchange we can provide volunteer service from our group of 23 people.</a></button>
   <br>
-
 </div>
+
 <div id="Completed_Offers" class="tab1content">
   <h3>Completed Offers</h3>
   <button class="btn btn-info"><a href= "#" style="color:white;">Animal Awareness Club: We need some help getting in touch with animal rights information groups to provide a presentation at our club.</a></button>
@@ -80,21 +79,57 @@
 <div id="Company_Description" class="tab1content">
   <h3>Description</h3>
   <p>A small company with big goals and hopefully big influnce for good. Stop mistreatment of animals.</p>
-
-
-  <div id='Stats' class="tab1content" style="color:Black;">
-    <h3>Stats</h3>
-    <p>Total Visits to your about page: 100</p>
-    <p>Visits to your about page this month: 20</p>
-    <p>Visits to your about page this week: 6</p>
-    <p>Completed offers: 1</p>
-    <p>Pending offers: 1</p>
 </div>
-    <br>
-    <br>
 
-
+<div id='Stats' class="tab1content" style="color:Black;">
+  <h3>Stats</h3>
+  <p>Total Visits to your about page: 100</p>
+  <p>Visits to your about page this month: 20</p>
+  <p>Visits to your about page this week: 6</p>
+  <p>Completed offers: 1</p>
+  <p>Pending offers: 1</p>
+  <br>
+  <br>
 </div>
+</div>
+
+<div id="business-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Make a Offer</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              {% for message in get_flashed_messages(category_filter=['create']) %}
+                  <div>{{ message }}</div>
+              {% endfor %}
+
+              <div class="container">
+                  <form action="/create" class="needs-validation" method="post" novalidate>
+
+                      <div class="form-group">
+                          <label for="tag" class="pt-3">Tags:</label>
+                          <input type="text" class="form-control" id="Tags:" placeholder="Tags" name="Tags" required>
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="offers">Offers:</label>
+                          <input type="offers" class="form-control" id="offers" placeholder="Enter sponsorship offers"
+                                 name="offers" required>
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
