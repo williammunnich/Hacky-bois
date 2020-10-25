@@ -1,8 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Hacky Bois</title>
+<script src="script/main.js"></script>
+<style href="style/style.css" rel="stylesheet" type="text/css"></style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <div class="image-wrapper">
+     <img src=" {{ art_work }}" />
+  </div>
+  <h3>{{ organization_name }}</h3>
+
+  <h3>Description</h3>
+  <p>{{ description }}</p>
+  <h3>Acomplishments</h3>
+  <p>{% for acomplishment in acomplishments %}
+  <p>{{ acomplishment }}</p>
+  <br>
+  {% endfor %}</p>
+  <h3>Current Offers</h3>
+  <p>{% for offer in offers %}
+  <p>{{ offer }}</p>
+  <br>
+  {% endfor %}</p>
+  <h3>Past Deals</h3>
+  <p>{% for past_deal in past_deals %}
+  <p>{{ past_deal }}</p>
+  <br>
+  {% endfor %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
