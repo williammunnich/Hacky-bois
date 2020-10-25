@@ -17,13 +17,14 @@ ACCOUNT_TYPE = {
 
 
 def create_db():
-    sql = """CREATE TABLE IF NOT EXISTS users (
+    sql1 = """CREATE TABLE IF NOT EXISTS users (
     user_id integer PRIMARY KEY AUTOINCREMENT,
     account_type int not null,
     email varchar,
     password varchar,
     unique (email, account_type)
-);
+);"""
+    sql2 = """
 create table if not exists sessions
 (
     session_id integer
@@ -33,7 +34,8 @@ create table if not exists sessions
     unique (session_id, user_id)
 );
 """
-    sqlite3.connect(DATABASE).executemany(sql)
+    sqlite3.connect(DATABASE).execute(sql1)
+    sqlite3.connect(DATABASE).execute(sql2)
 
 
 create_db()
@@ -88,7 +90,7 @@ def get_session(u_id):
 def get_user(session_id):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute('SELECT session_id FROM sessions WHERE session_id=?', (session_id,))
+    cursor.execute('SELECT user_id FROM sessions WHERE session_id=?', (session_id,))
     return cursor.fetchone()
 
 
@@ -150,7 +152,6 @@ def login():
         email = request.form['email']
         password = request.form['password']
         u_id: dict = get_user_id(email, password)
-        print(email, password)
         if u_id is None:
             flash('No account registered for that email', 'not exists')
             return redirect('login')
@@ -166,6 +167,16 @@ def login():
         else:
             resp = make_response(render_template('login.html'))
         return resp
+
+
+@app.route('/logout', methods=['post'])
+def logout():
+    session_id = request.cookies.get('s_id')
+    u_id = get_user(session_id)['user_id']
+    close_session(u_id)
+    resp = redirect(url_for('login'))
+    resp.set_cookie('s_id', '', expires=0)
+    return resp
 
 
 @app.route('/create', methods=['post'])
