@@ -33,7 +33,7 @@ create table if not exists sessions
     unique (session_id, user_id)
 );
 """
-    sqlite3.connect(DATABASE).execute(sql)
+    sqlite3.connect(DATABASE).executemany(sql)
 
 
 create_db()
