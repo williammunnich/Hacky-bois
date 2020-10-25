@@ -12,28 +12,15 @@
 
 <head>
     <title>Hacky Bois</title>
+    <script src={{ url_for('static', filename='script/main.js') }}></script>
     <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
-   <title>Hacky Bois</title>
-   <script src="../script/main.js"></script>
-   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script>
-
-</script>
- </head>
 <body>
-
 <div class="float-right">
   <form action="/logout" class="needs-validation" method="post" novalidate>
     <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
   </form>
-</div>
-
-<div class="float-left">
-  <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">Offer</button>
 </div>
 
 <h3 class="container w-50 p-3 my-3 bg-dark text-white">Animal Rights Club</h3>
