@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 {% if error %}
-    <div style="display:none" id="sentinel">
+    <div style="display:none" id="sentinel"></div>
 {% endif %}
 
 <body class="">
@@ -20,7 +20,7 @@
 
 <div class="container w-50">
 
-    {% for message in get_flashed_messages() %}
+    {% for message in get_flashed_messages(category_filter=['not exists']) %}
         <div>{{ message }}</div>
     {% endfor %}
 
@@ -60,8 +60,8 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                {% for category, message in get_flashed_messages(category_filter=['create']) %}
-                        <div>{{ message }}</div>
+                {% for message in get_flashed_messages(category_filter=['create']) %}
+                    <div>{{ message }}</div>
                 {% endfor %}
 
                 <div class="container">
@@ -70,13 +70,13 @@
                         <div class="p1 pb-2">Orginization Type:</div>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-secondary active center">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked required>
+                                <input type="radio" name="options" value="club" id="option1" autocomplete="off" checked required>
                                 Club
                                 <div class="valid-feedback"></div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </label>
                             <label class="btn btn-secondary">
-                                <input type="radio" name="options" id="option2" autocomplete="off" required> Company
+                                <input type="radio" name="options" value="business" id="option2" autocomplete="off" required> Company
                                 <div class="valid-feedback"></div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </label>
@@ -84,7 +84,7 @@
 
                         <div class="form-group">
                             <label for="uname" class="pt-3">Email:</label>
-                            <input type="text" class="form-control" id="mail" placeholder="Enter username" name="mail"
+                            <input type="text" class="form-control" id="mail" placeholder="Enter username" name="email"
                                    required>
                             <div class="valid-feedback"></div>
                             <div class="invalid-feedback">Please fill out this field.</div>
@@ -93,7 +93,7 @@
                         <div class="form-group">
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="pwd" placeholder="Enter password"
-                                   name="pswd" required>
+                                   name="password" required>
                             <div class="valid-feedback"></div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
@@ -140,10 +140,17 @@
         }, false);
     })();
 
-
+    $('document').ready(
+        () => {
+            let el = document.getElementById('sentinel');
+            if (el) {
+                $('#myModal').modal('show');
+            }
+        }
+    )
 </script>
 
-<script>
-    x = "this means the test worked"
-    document.getElementById("demo").innerHTML = x;
-</script>
+{#<script>#}
+{#    x = "this means the test worked"#}
+{#    document.getElementById("demo").innerHTML = x;#}
+{#</script>#}
