@@ -2,58 +2,47 @@
 <html lang="en">
 
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<title>Hacky Bois</title>
-<script src="../script/main.js"></script>
-<style href="../css/style.css" rel="stylesheet" type="text/css"></style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Hacky Bois</title>
+    <link href="{{ url_for('static', filename="css/style.css") }}" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <div class="float-right">
-  <form action="/logout" class="needs-validation" method="post" novalidate>
-    <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
-  </form>
+    <form action="/logout" class="needs-validation" method="post" novalidate>
+        <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
+    </form>
 </div>
 
 <body>
-  <div  class="image-wrapper" style="text-align:center;" >
-     <img src="../images/prof2.jpg" class="img-thumbnail" style="width:20%; text-align:center;" />
-  </div>
-  <div class="jumbotron text-center">
-  <h3>Animal Rights Club</h3>
-  <br><br>
+<div class="image-wrapper" style="text-align:center;">
+    <img src={{ url_for('static', filename="images/prof2.jpg") }} class="img-thumbnail"
+         style="width:20%; text-align:center;"/>
+</div>
+<div class="jumbotron text-center">
+    <h3>Animal Rights Club</h3>
+    <br><br>
 
-  <h3>Description</h3>
-  <p>23 people, all inredibly passionate about making the world a more fair place for animals. We meet twice a week and implement plans for change.</p>
-  <h3>Acomplishments</h3>
-  <p>Successfully organized a monthly volunteer group at the local pound.</p>
-  <p>Raised $5000 for helping to get homes for stray dogs in the area.</p>
-  <br>
+    <h3>Description</h3>
+    <p>23 people, all inredibly passionate about making the world a more fair place for animals. We meet twice a week
+        and implement plans for change.</p>
+    <h3>Acomplishments</h3>
+    <p>Successfully organized a monthly volunteer group at the local pound.</p>
+    <p>Raised $5000 for helping to get homes for stray dogs in the area.</p>
+    <br>
 
-  <h3>Current Needs</h3>
-  <p>Someone who is experienced in plannng to help gather connections for going up against the Evil Corp's "Kill Animal Mandate", as well help raising funds to help pay for a lawyer.</p>
-
-
-
-
-
+    <h3>Current Needs</h3>
+    <p>Someone who is experienced in plannng to help gather connections for going up against the Evil Corp's "Kill
+        Animal Mandate", as well help raising funds to help pay for a lawyer.</p>
 
 
-
-
-
-
-
-
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </body>
