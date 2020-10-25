@@ -10,29 +10,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- 11564 -->
 <head>
-   <title>Hacky Bois</title>
-   <script src="../script/main.js"></script>
-   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
- </head>
-
-
-
+    <title>Hacky Bois</title>
+    <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <body>
-
-  <div class="image-wrapper">
-     <img src=" {{ art_work }}" />
-  </div>
-  <h3>{{ organization_name }}</h3>
-  <h3>Search Offers</h3>
-  <form action="http://localhost:8080" method="POST">
+<div class="image-wrapper">
+    <img src=" {{ art_work }}"/>
+</div>
+<h3>{{ organization_name }}</h3>
+<h3>Search Offers</h3>
+<form action="http://localhost:8080" method="POST">
     <input type="text" id="search" name="search">
     <input type="submit" value="Search">
     <br><br>
-  </form>
+</form>
 
 
-  <!--
+<!--
   <div class="tab">
     <button class="tablinks" onclick="openPage1(event, 'Dashboard')">Dashboard</button>
 
@@ -70,82 +65,65 @@
     </div>
   -->
 
-  <div class="tab1">
-
+<div class="tab1">
     <button class="tab1links" onclick="openPage1(event, 'Dashboard')">Dashboard</button>
     <button class="tab1links" onclick="openPage1(event, 'Current')">Current Offers</button>
     <button class="tab1links" onclick="openPage1(event, 'Completed')">Completed Offers</button>
+</div>
 
-
-  </div>
-
-
-  <div id="Dashboard" class="tab1content">
+<div id="Dashboard" class="tab1content">
     <button class="tab2links" onclick="openPage2(event, 'Current')">Current Offers</button>
     <button class="tab2links" onclick="openPage2(event, 'Description')">Company description</button>
     <button class="tab2links" onclick="openPage2(event, 'Stats')">Stats</button>
     <button class="tab2links" onclick="openPage2(event, 'Pending2')">Pending offers</button>
-  </div>
+</div>
 
-  <div id="Current" class="tab2content">
-      <h3>Current Offers</h3>
-      {% for offer in offers_current %}
-      <button><a href="{{ offer_link }}">{{ offer_current }}</a></button>
-      <br>
-      {% endfor %}
-  </div>
-
-    <div id="Description" class="tab2content">
-      <h3>Description</h3>
-      <p>{{ company_description }}</p>
-    </div>
-
-    <div id="Stats" class="tab2content">
-      <h3>Stats</h3>
-      {% for stat in stats %}
-      <p>{{ stat }}</p>
-      <br>
-      {% endfor %}
-    </div>
-
-    <div id="Pending2" class="tab2content">
-      <h3>Pending</h3>
-      {% for pending in pendings %}
-      <button><a href="{{ offer_link }}">{{ pending }}</a></button>
-      <br>
-      {% endfor %}
-    </div>
-
-
-
-
-  <div id="Dashboard" class="tab1content">
-    
-
-
-  </div>
-
-  <div id="Current" class="tab1content">
-    {% for the_current in currents %}
-    <button><a href={{offers_current_info}}>{{ the_current }}</a></button>
-    <br>
+<div id="Current" class="tab2content">
+    <h3>Current Offers</h3>
+    {% for offer in offers_current %}
+        <button><a href="{{ offer_link }}">{{ offer_current }}</a></button>
+        <br>
     {% endfor %}
-  </div>
+</div>
 
-  <div id="Completed" class="tab1content">
+<div id="Description" class="tab2content">
+    <h3>Description</h3>
+    <p>{{ company_description }}</p>
+</div>
+
+<div id="Stats" class="tab2content">
+    <h3>Stats</h3>
+    {% for stat in stats %}
+        <p>{{ stat }}</p>
+        <br>
+    {% endfor %}
+</div>
+
+<div id="Pending2" class="tab2content">
+    <h3>Pending</h3>
+    {% for pending in pendings %}
+        <button><a href="{{ offer_link }}">{{ pending }}</a></button>
+        <br>
+    {% endfor %}
+</div>
+
+<div id="Dashboard" class="tab1content">
+</div>
+
+<div id="Current" class="tab1content">
+    {% for the_current in currents %}
+        <button><a href={{ offers_current_info }}>{{ the_current }}</a></button>
+        <br>
+    {% endfor %}
+</div>
+
+<div id="Completed" class="tab1content">
     <h3>Completed Offers</h3>
     {% for complete in completed %}
-    <button><a href={{offers_current_info}}>{{ complete }}</a></button>
-    <br>
+        <button><a href={{ offers_current_info }}>{{ complete }}</a></button>
+        <br>
     {% endfor %}
-  </div>
-
-
-
-
-
-
-
+</div>
+<script src={{ url_for('static', filename='script/main.js') }}></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </body>
