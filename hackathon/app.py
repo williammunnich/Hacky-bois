@@ -6,7 +6,7 @@ from pathlib import Path
 if False:
     from flask import Response
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static/')
 
 DATABASE = Path('database.db')
 
@@ -67,7 +67,7 @@ def open_session(u_id):
     else:
         cursor.execute('UPDATE sessions SET open=true WHERE user_id=?', (u_id,))
     conn.commit()
-    return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()
+    return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()['session_id']
 
 
 def get_session(u_id):
@@ -101,7 +101,7 @@ def get_user_type(session_id):
     cursor.execute(
         'SELECT account_type FROM users join sessions on users.user_id = sessions.user_id WHERE session_id=?',
         (session_id,))
-    return cursor.fetchone()
+    return cursor.fetchone()['account_type']
 
 
 def get_user_id(username, password):
@@ -134,7 +134,6 @@ def main_page():
         return make_response(render_template('business.html'))
     elif account_type == 2:
         return make_response(render_template('club.html'))
-    # return render_template('login.html')
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -169,18 +168,21 @@ def create_user():
     cursor = conn.cursor()
 
     res = cursor.execute('SELECT * FROM users WHERE email=?', (email,)).fetchone()
-    print(res)
     if res:
         flash('User already exists', 'create')
         resp = redirect(url_for('login'))
         session['exists error'] = True
         return resp
     else:
-        print(ACCOUNT_TYPE[request.form['options']])
         cursor.execute('INSERT INTO users (account_type, email, password) values (?, ?,?)',
                        (ACCOUNT_TYPE[request.form['options']], email, password))
+        cursor.execute('SELECT user_id FROM users where ROWID=?', (cursor.lastrowid, ))
+        user_id = cursor.fetchone().get('user_id')
+        session_id = open_session(user_id)
         conn.commit()
-        return redirect(url_for('login'))
+        resp = redirect(url_for('login'))
+        resp.set_cookie('s_id', str(session_id))
+        return resp
 
 
 @app.route('/club/<club_id>')
