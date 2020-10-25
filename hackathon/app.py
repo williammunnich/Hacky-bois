@@ -199,7 +199,7 @@ def create_user():
         user_id = cursor.fetchone().get('user_id')
         session_id = open_session(user_id)
         conn.commit()
-        resp = redirect(url_for('login'))
+        resp = redirect(url_for('main_page'))
         resp.set_cookie('s_id', str(session_id))
         return resp
 
