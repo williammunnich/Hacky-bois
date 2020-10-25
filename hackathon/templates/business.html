@@ -12,39 +12,42 @@
 
 <head>
     <title>Hacky Bois</title>
+    <script src={{ url_for('static', filename='script/main.js') }}></script>
     <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-   <title>Hacky Bois</title>
-   <script src="../script/main.js"></script>
-   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script>
+<title>Hacky Bois</title>
+<script src="../script/main.js"></script>
+<style href="../css/style.css" rel="stylesheet" type="text/css"></style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
 
 </script>
- </head>
+</head>
 <body>
 
 <div class="float-right">
-  <form action="/logout" class="needs-validation" method="post" novalidate>
-    <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
-  </form>
+    <form action="/logout" class="needs-validation" method="post" novalidate>
+        <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
+    </form>
 </div>
 
 <div class="float-left">
-  <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">Offer</button>
+    <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">
+        Offer
+    </button>
 </div>
 
 <h3 class="container w-50 p-3 my-3 bg-dark text-white">Organization Name</h3>
 
 <div class="text-center">
-  <h3>Search Offers</h3>
-  <form action="http://localhost:8080" method="POST">
-      <input type="text" id="search" name="search">
-      <input type="submit" value="Search">
-      <br><br>
-  </form>
+    <h3>Search Offers</h3>
+    <form action="http://localhost:8080" method="POST">
+        <input type="text" id="search" name="search">
+        <input type="submit" value="Search">
+        <br><br>
+    </form>
 </div>
 
 <!--
@@ -86,89 +89,89 @@
   -->
 
 <div class="text-center">
-  <div class="btn-group">
-    <button type="button" class="btn btn-primary" onclick="myFunction()">Current Offers</button>
-    <button type="button" class="btn btn-primary" onclick="openPage1(event, 'Completed')">Completed Offers</button>
-    <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Pending2')">Pending offers</button>
-  </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" onclick="myFunction()">Current Offers</button>
+        <button type="button" class="btn btn-primary" onclick="openPage1(event, 'Completed')">Completed Offers</button>
+        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Pending2')">Pending offers</button>
+    </div>
 </div>
 
 <div class="text-center pt-3">
-  <div class="btn-group">
-      <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Description')">Profile</button>
-      <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Stats')">Stat overview</button>
-  </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Description')">Profile</button>
+        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Stats')">Stat overview</button>
+    </div>
 </div>
 
 <div id="mainFrameOne">
-  <p>mainFrameOne</p>
+    <p>mainFrameOne</p>
 </div>
 
 <div id="mainFrameTwo" style="display:none;">
-  <p>mainFrameTwo</p>
+    <p>mainFrameTwo</p>
 </div>
 
 <script src={{ url_for('static', filename='script/main.js') }}></script>
 
 <div id="business-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title">Submit an Offer</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-              {% for message in get_flashed_messages() %}
-                  <div>{{ message }}</div>
-              {% endfor %}
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Submit an Offer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% for message in get_flashed_messages() %}
+                    <div>{{ message }}</div>
+                {% endfor %}
 
-              <div class="container">
-                  <form action="/offer" class="needs-validation" method="post" novalidate>
+                <div class="container">
+                    <form action="/offer" class="needs-validation" method="post" novalidate>
 
-                      <div class="form-group">
-                          <label for="uname" class="pt-3">Tags:</label>
-                          <input type="text" class="form-control" id="tag:" placeholder="" name="mail"
-                                 required>
-                          <div class="valid-feedback"></div>
-                          <div class="invalid-feedback">Please fill out this field.</div>
-                      </div>
+                        <div class="form-group">
+                            <label for="uname" class="pt-3">Tags:</label>
+                            <input type="text" class="form-control" id="tag:" placeholder="" name="mail"
+                                   required>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
 
-                      <div class="form-group">
-                          <label for="pwd">Password:</label>
-                          <input type="password" class="form-control" id="description" placeholder="Enter password"
-                                 name="pswd" required>
-                          <div class="valid-feedback"></div>
-                          <div class="invalid-feedback">Please fill out this field.</div>
-                      </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="description" placeholder="Enter password"
+                                   name="pswd" required>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
 
-                      <div class="form-group form-check">
-                          <label class="form-check-label" class="pt-2">
-                              <input class="form-check-input" type="checkbox" name="remember" required> I agree to the
-                              <a href="terms.html"> Terms and Conditions</a> .
-                              <div class="valid-feedback"></div>
-                              <div class="invalid-feedback">Check this checkbox to continue.</div>
-                          </label>
-                      </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label" class="pt-2">
+                                <input class="form-check-input" type="checkbox" name="remember" required> I agree to the
+                                <a href="../static/html/terms.html"> Terms and Conditions</a> .
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-feedback">Check this checkbox to continue.</div>
+                            </label>
+                        </div>
 
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-              </div>
-          </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
 
-          <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
 
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 
 <script>
-  function myFunction() { 
-    document.getElementById("mainFrameOne").style.display="none"; 
-    document.getElementById("mainFrameTwo").style.display="block"; 
-  }
+    function myFunction() {
+        document.getElementById("mainFrameOne").style.display = "none";
+        document.getElementById("mainFrameTwo").style.display = "block";
+    }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
