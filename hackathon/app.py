@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect, url_for, render_template, flash
+from flask import Flask, request, make_response, redirect, url_for, render_template, flash, session
 import sqlite3
 from flask import g
 from pathlib import Path
@@ -88,6 +88,15 @@ def close_session(u_id):
     cursor.execute('UPDATE sessions SET open=false WHERE user_id=?', (u_id,))
 
 
+def get_user_type(session_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute(
+        'SELECT account_type FROM users join sessions on users.user_id = sessions.user_id WHERE session_id=?',
+        (session_id,))
+    return cursor.fetchone()
+
+
 def get_user_id(username, password):
     """
     :param username: username of account
@@ -98,8 +107,10 @@ def get_user_id(username, password):
     cursor = conn.cursor()
     cursor.execute('SELECT user_id FROM users where email=? and password=?', (username, password))
     res = cursor.fetchone()
+    print(res)
     if res is not None:
         return res['user_id']
+
 
 
 @app.route('/')
@@ -112,8 +123,12 @@ def main_page():
         return resp
 
     u_id = get_user(session_id)
-
-    return render_template('login.html')
+    account_type = get_user_type(session_id)
+    if account_type == 1:
+        return make_response(render_template('business.html'))
+    else:
+        return make_response(render_template('club.html'))
+    # return render_template('login.html')
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -122,17 +137,22 @@ def login():
         email = request.form['email']
         password = request.form['password']
         u_id: dict = get_user_id(email, password)
+        print(email, password)
         if u_id is None:
-            flash('No account registered for that email')
+            flash('No account registered for that email', 'not exists')
             return redirect('login')
 
         session_id = open_session(u_id)
-
-        resp: Response = make_response(redirect(url_for('login')))
-        resp.set_cookie('s_id', session_id)
+        resp: Response = make_response(redirect(url_for('main_page')))
+        resp.set_cookie('s_id', str(session_id))
+        return resp
     else:
-        resp = make_response(render_template('login.html'))
-    return resp
+        if session.get('exists error'):
+            resp = make_response(render_template('login.html', error=True))
+            del session['exists error']
+        else:
+            resp = make_response(render_template('login.html'))
+        return resp
 
 
 @app.route('/create', methods=['post'])
@@ -143,16 +163,22 @@ def create_user():
     cursor = conn.cursor()
     res = cursor.execute('SELECT * FROM users WHERE email=?', (email,))
     if res:
-        flash('User already exists')
-        resp = redirect('login')
+        flash('User already exists', 'create')
+        resp = redirect(url_for('login'))
+        session['exists error'] = True
         return resp
     else:
         cursor.execute('INSERT INTO users (email, password) values (?,?)')
+        return redirect('/')
 
 
 @app.route('/club/<club_id>')
 def get_club(club_id):
-    pass
+    return make_response(render_template('club.html'))
+
+@app.route('/company/<company_id>')
+def get_company(company_id):
+    return make_response(render_template('business.html'))
 
 
 if __name__ == '__main__':
