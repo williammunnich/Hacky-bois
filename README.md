@@ -1,2 +1,2 @@
 # Hacky-bois
- connect donara to student organization leaders
+ connect donors to student organizations

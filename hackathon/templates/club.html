@@ -12,7 +12,8 @@
 
 <head>
     <title>Hacky Bois</title>
-    <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
+    <script src={{ url_for('static', filename='script/main.js') }}></script>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -27,9 +28,9 @@
 <body>
 
 <div class="float-right">
-  <form action="/logout" class="needs-validation" method="post" novalidate>
-    <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
-  </form>
+    <form action="/logout" class="needs-validation" method="post" novalidate>
+        <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
+    </form>
 </div>
 
 <div class="float-left">
@@ -56,62 +57,70 @@
 -->
 
 
-
-<div  class="image-wrapper" style="text-align:center;" >
-  <img src="../images/prof2.jpg" class="img-thumbnail" style="width:20%; text-align:center;" />
+<div class="image-wrapper" style="text-align:center;">
+    <img src="{{ url_for('static', filename='images/prof2.jpg') }}" class="img-thumbnail"
+         style="width:20%; text-align:center;"/>
 </div>
 
 <div class="jumbotron text-center">
 
-<h3>Search Offers</h3>
+    <h3>Search Offers</h3>
 
-<form action="http://localhost:8080" method="POST">
-  <input type="text" id="search" name="search">
-  <input type="submit" class="btn btn-info"  value="Search">
-  <br><br>
-</form>
+    <form action="http://localhost:8080" method="POST">
+        <input type="text" id="search" name="search">
+        <input type="submit" class="btn btn-info" value="Search">
+        <br><br>
+    </form>
 </div>
 
 
 <div style="text-align:center;">
-<div class="tab1">
-  <button class="btn btn-info" class="tablinks"  onclick="openPage1(event, 'All')">All</button>
-  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'New')">New</button>
-  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
-  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
-</div>
+    <div class="tab1">
+        <button class="btn btn-info" class="tablinks" onclick="openPage1(event, 'All')">All</button>
+        <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'New')">New</button>
+        <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
+        <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
+    </div>
 
-<div id="New" class="tab1content">
-  <h3>New</h3>
+    <div id="New" class="tab1content">
+        <h3>New</h3>
 
-  <button class="btn btn-info"><a href= "company_about.html" style="color:white;">ARFA: We have a grant available for any person or group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
-  <br>
+        <button class="btn btn-info"><a
+                href={{ url_for('static', filename='company_about.html') }} style="color:white;">ARFA: We have a grant
+            available for any person or group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a>
+        </button>
+        <br>
 
-</div>
-<div id="Recommended" class="tab1content">
-  <h3>Recommended</h3>
-  <button class="btn btn-info"><a href= "#" style="color:white;">Temp Agency: Volunteer with us next week at our work fair for a chance to win a speaker</a></button>
-  <br>
-</div>
+    </div>
+    <div id="Recommended" class="tab1content">
+        <h3>Recommended</h3>
+        <button class="btn btn-info"><a href="#" style="color:white;">Temp Agency: Volunteer with us next week at our
+            work fair for a chance to win a speaker</a></button>
+        <br>
+    </div>
 
-<div id="Pending" class="tab1content">
-  <h3>Pending</h3>
-  <button class="btn btn-info"><a href= "#" style="color:white;">We have a grant available for any person or group that can implement a plan to resist  Evil Corp's "Kill Animal Mandate".</a></button>
-  <br>
-</div>
+    <div id="Pending" class="tab1content">
+        <h3>Pending</h3>
+        <button class="btn btn-info"><a href="#" style="color:white;">We have a grant available for any person or group
+            that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
+        <br>
+    </div>
 
-<div id="All" class="tab1content">
-  <h3>All</h3>
-  <button class="btn btn-info"><a href= "#" style="color:white;">ARFA: We have a grant available for any person or group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
-  <br>
-  <br>
-  <button class="btn btn-info"><a href= "#" style="color:white;">Temp Agency: Volunteer with us next week at our work fair for a chance to win a speaker</a></button>
-  <br>
-  <br>
-  <button class="btn btn-info"><a href= "company_about.html" style="color:white;">We have a grant available for any person or group that can implement a plan to resist Evil Corp's kill animal bill.</a></button>
-  <br>
-  <br>
-</div>
+    <div id="All" class="tab1content">
+        <h3>All</h3>
+        <button class="btn btn-info"><a href="#" style="color:white;">ARFA: We have a grant available for any person or
+            group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
+        <br>
+        <br>
+        <button class="btn btn-info"><a href="#" style="color:white;">Temp Agency: Volunteer with us next week at our
+            work fair for a chance to win a speaker</a></button>
+        <br>
+        <br>
+        <button class="btn btn-info"><a href="company_about.html" style="color:white;">We have a grant available for any
+            person or group that can implement a plan to resist Evil Corp's kill animal bill.</a></button>
+        <br>
+        <br>
+    </div>
 </div>
 </body>
 </html>
