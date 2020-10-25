@@ -60,8 +60,8 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                {% for message in get_flashed_messages() %}
-                    <div>{{ message }}</div>
+                {% for category, message in get_flashed_messages(category_filter=['create']) %}
+                        <div>{{ message }}</div>
                 {% endfor %}
 
                 <div class="container">
@@ -139,6 +139,7 @@
             });
         }, false);
     })();
+
 
 </script>
 
