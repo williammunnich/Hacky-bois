@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect, url_for, render_template, flash, session
+from flask import Flask, request, make_response, redirect, url_for, render_template, flash, session, send_from_directory
 import sqlite3
 from flask import g
 from pathlib import Path
@@ -204,9 +204,14 @@ def create_user():
         return resp
 
 
-@app.route('/club/<club_id>')
+@app.route('/club')
 def get_club(club_id):
     return make_response(render_template('club.html'))
+
+
+@app.route('/about/<path:path>')
+def send_about(path):
+    return send_from_directory('static/about', path)
 
 
 @app.route('/company/<company_id>')
