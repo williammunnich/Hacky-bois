@@ -1,13 +1,29 @@
 from flask import Flask, request, make_response, redirect, url_for, render_template, flash
 import sqlite3
 from flask import g
+from pathlib import Path
 
 if False:
     from flask import Response
 
 app = Flask(__name__)
 
-DATABASE = 'database.db'
+DATABASE = Path('database.db')
+
+
+def create_db():
+    sql = """CREATE TABLE IF NOT EXISTS users (
+    user_id integer PRIMARY KEY AUTOINCREMENT,
+    account_type int not null,
+    email varchar,
+    password varchar,
+    unique (email, account_type)
+);
+"""
+    sqlite3.connect(DATABASE).execute(sql)
+
+
+create_db()
 
 
 def dict_factory(cursor, row) -> dict:
@@ -121,20 +137,17 @@ def login():
 
 @app.route('/create', methods=['post'])
 def create_user():
-    print(request.form)
     email = request.form['email']
     password = request.form['password']
     conn = get_db()
     cursor = conn.cursor()
-    res = cursor.execute('SELECT * FROM users WHERE email=?', (email, ))
+    res = cursor.execute('SELECT * FROM users WHERE email=?', (email,))
     if res:
         flash('User already exists')
-        resp = make_response(redirect('login'))
+        resp = redirect('login')
         return resp
     else:
         cursor.execute('INSERT INTO users (email, password) values (?,?)')
-
-
 
 
 @app.route('/club/<club_id>')
@@ -143,5 +156,5 @@ def get_club(club_id):
 
 
 if __name__ == '__main__':
-    app.secret_key="test"
+    app.secret_key = "test"
     app.run(port=8080, debug=True)
