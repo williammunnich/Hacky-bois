@@ -12,167 +12,90 @@
 
 <head>
     <title>Hacky Bois</title>
-    <script src={{ url_for('static', filename='script/main.js') }}></script>
     <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<title>Hacky Bois</title>
-<script src="../script/main.js"></script>
-<style href="../css/style.css" rel="stylesheet" type="text/css"></style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
+   <title>Hacky Bois</title>
+   <script src="../script/main.js"></script>
+   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script>
 
 </script>
-</head>
+ </head>
 <body>
 
 <div class="float-right">
-    <form action="/logout" class="needs-validation" method="post" novalidate>
-        <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
-    </form>
+  <form action="/logout" class="needs-validation" method="post" novalidate>
+    <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
+  </form>
 </div>
 
 <div class="float-left">
-    <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">
-        Offer
-    </button>
+  <button type="button" class="btn btn-info btn-dark btn-lg right" data-toggle="modal" data-target="#business-modal">Offer</button>
 </div>
 
-<h3 class="container w-50 p-3 my-3 bg-dark text-white">Organization Name</h3>
+<h3 class="container w-50 p-3 my-3 bg-dark text-white">ARFA: Animal Rights For America</h3>
 
 <div class="text-center">
-    <h3>Search Offers</h3>
-    <form action="http://localhost:8080" method="POST">
-        <input type="text" id="search" name="search">
-        <input type="submit" value="Search">
-        <br><br>
-    </form>
-</div>
-
-<!--
-  <div class="tab">
-    <button class="tablinks" onclick="openPage1(event, 'Dashboard')">Dashboard</button>
-
-
-    <button class="tablinks" onclick="openPage1(event, 'Dashboard')">Offers</button>
-    <button class="tablinks" onclick="openPage1(event, 'Dashboard')">Past Offers</button>
-
-    <br><br>
-  </form>
-  </div>
-
-
-  <div id="Dashboard" class="tabcontent">
-
-    <h3>Dashboard</h3>
-
-      <button type="submit" id = "Current" name="Current" value="Current">Current</button>
-      <button type="submit" id = "Description" name="Description" value="Description">Description</button>
-      <button type="submit" id = "Stats" name="Stats" value="Stats">Stats</button>
-      <button type="submit" id = "Pending" name="Pending" value="Pending">Pending</button>
-
+  <h3>Search Offers</h3>
+  <form action="http://localhost:8080" method="POST">
+      <input type="text" id="search" name="search">
+      <input type="submit" value="Search">
       <br><br>
+  </form>
+</div>
+
+
+<div style="text-align:center;">
+<div class="tab1">
+  <button class="btn btn-info" class="tablinks"  onclick="openPage1(event, 'Current_Offers')">Current Offers</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Completed_Offers')">Completed Offers</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Stats')">Stats</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Company_Description')">Company Description</button>
+
+</div>
+
+<div id="Current_Offers" class="tab1content">
+  <h3>Current Offers</h3>
+
+  <button class="btn btn-info"><a href= "club_about.html" style="color:white;">Animal Rights Club: We really need help with networking, and getting funds for a lawyer to go up against Evil Corp's "Kill Animal Mandate". In exchange we can provide volunteer service from our group of 23 people.</a></button>
+  <br>
+
+</div>
+<div id="Completed_Offers" class="tab1content">
+  <h3>Completed Offers</h3>
+  <button class="btn btn-info"><a href= "#" style="color:white;">Animal Awareness Club: We need some help getting in touch with animal rights information groups to provide a presentation at our club.</a></button>
+  <br>
+</div>
+
+<div id="Pending" class="tab1content">
+  <h3>Pending Offers</h3>
+  <button class="btn btn-info"><a href= "#" style="color:white;">Equestrian Club: We need help with building a winter stable.</a></button>
+  <br>
+</div>
+
+<div id="Company_Description" class="tab1content">
+  <h3>Description</h3>
+  <p>A small company with big goals and hopefully big influnce for good. Stop mistreatment of animals.</p>
+
+
+  <div id='Stats' class="tab1content" style="color:Black;">
+    <h3>Stats</h3>
+    <p>Total Visits to your about page: 100</p>
+    <p>Visits to your about page this month: 20</p>
+    <p>Visits to your about page this week: 6</p>
+    <p>Completed offers: 1</p>
+    <p>Pending offers: 1</p>
   </div>
-
-    <div id="Current" class="tabcontent">
-    {% for offer in offers_current %}
-    <button><a href={{offers_current_info}}>{{offer_current}}</a></button>
     <br>
-    {% endfor %}
-    </div>
+    <br>
 
 
-    <div id="Description" class="tabcontent">
-      {{company_description}}
-    </div>
-  -->
-
-<div class="text-center">
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary" onclick="myFunction()">Current Offers</button>
-        <button type="button" class="btn btn-primary" onclick="openPage1(event, 'Completed')">Completed Offers</button>
-        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Pending2')">Pending offers</button>
-    </div>
 </div>
-
-<div class="text-center pt-3">
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Description')">Profile</button>
-        <button type="button" class="btn btn-primary" onclick="openPage2(event, 'Stats')">Stat overview</button>
-    </div>
 </div>
-
-<div id="mainFrameOne">
-    <p>mainFrameOne</p>
-</div>
-
-<div id="mainFrameTwo" style="display:none;">
-    <p>mainFrameTwo</p>
-</div>
-
-<script src={{ url_for('static', filename='script/main.js') }}></script>
-
-<div id="business-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Submit an Offer</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                {% for message in get_flashed_messages() %}
-                    <div>{{ message }}</div>
-                {% endfor %}
-
-                <div class="container">
-                    <form action="/offer" class="needs-validation" method="post" novalidate>
-
-                        <div class="form-group">
-                            <label for="uname" class="pt-3">Tags:</label>
-                            <input type="text" class="form-control" id="tag:" placeholder="" name="mail"
-                                   required>
-                            <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="description" placeholder="Enter password"
-                                   name="pswd" required>
-                            <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-
-                        <div class="form-group form-check">
-                            <label class="form-check-label" class="pt-2">
-                                <input class="form-check-input" type="checkbox" name="remember" required> I agree to the
-                                <a href="../static/html/terms.html"> Terms and Conditions</a> .
-                                <div class="valid-feedback"></div>
-                                <div class="invalid-feedback">Check this checkbox to continue.</div>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-    function myFunction() {
-        document.getElementById("mainFrameOne").style.display = "none";
-        document.getElementById("mainFrameTwo").style.display = "block";
-    }
-</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
