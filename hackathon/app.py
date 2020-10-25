@@ -6,7 +6,7 @@ from pathlib import Path
 if False:
     from flask import Response
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static/')
 
 DATABASE = Path('database.db')
 
@@ -17,15 +17,25 @@ ACCOUNT_TYPE = {
 
 
 def create_db():
-    sql = """CREATE TABLE IF NOT EXISTS users (
+    sql1 = """CREATE TABLE IF NOT EXISTS users (
     user_id integer PRIMARY KEY AUTOINCREMENT,
     account_type int not null,
     email varchar,
     password varchar,
     unique (email, account_type)
+);"""
+    sql2 = """
+create table if not exists sessions
+(
+    session_id integer
+        primary key autoincrement,
+    user_id    integer,
+    open       integer,
+    unique (session_id, user_id)
 );
 """
-    sqlite3.connect(DATABASE).execute(sql)
+    sqlite3.connect(DATABASE).execute(sql1)
+    sqlite3.connect(DATABASE).execute(sql2)
 
 
 create_db()
@@ -67,7 +77,7 @@ def open_session(u_id):
     else:
         cursor.execute('UPDATE sessions SET open=true WHERE user_id=?', (u_id,))
     conn.commit()
-    return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()
+    return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()['session_id']
 
 
 def get_session(u_id):
@@ -80,7 +90,7 @@ def get_session(u_id):
 def get_user(session_id):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute('SELECT session_id FROM sessions WHERE session_id=?', (session_id,))
+    cursor.execute('SELECT user_id FROM sessions WHERE session_id=?', (session_id,))
     return cursor.fetchone()
 
 
@@ -101,7 +111,7 @@ def get_user_type(session_id):
     cursor.execute(
         'SELECT account_type FROM users join sessions on users.user_id = sessions.user_id WHERE session_id=?',
         (session_id,))
-    return cursor.fetchone()
+    return cursor.fetchone()['account_type']
 
 
 def get_user_id(username, password):
@@ -134,7 +144,6 @@ def main_page():
         return make_response(render_template('business.html'))
     elif account_type == 2:
         return make_response(render_template('club.html'))
-    # return render_template('login.html')
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -143,7 +152,6 @@ def login():
         email = request.form['email']
         password = request.form['password']
         u_id: dict = get_user_id(email, password)
-        print(email, password)
         if u_id is None:
             flash('No account registered for that email', 'not exists')
             return redirect('login')
@@ -161,6 +169,16 @@ def login():
         return resp
 
 
+@app.route('/logout', methods=['post'])
+def logout():
+    session_id = request.cookies.get('s_id')
+    u_id = get_user(session_id)['user_id']
+    close_session(u_id)
+    resp = redirect(url_for('login'))
+    resp.set_cookie('s_id', '', expires=0)
+    return resp
+
+
 @app.route('/create', methods=['post'])
 def create_user():
     email = request.form['email']
@@ -169,18 +187,21 @@ def create_user():
     cursor = conn.cursor()
 
     res = cursor.execute('SELECT * FROM users WHERE email=?', (email,)).fetchone()
-    print(res)
     if res:
         flash('User already exists', 'create')
         resp = redirect(url_for('login'))
         session['exists error'] = True
         return resp
     else:
-        print(ACCOUNT_TYPE[request.form['options']])
         cursor.execute('INSERT INTO users (account_type, email, password) values (?, ?,?)',
                        (ACCOUNT_TYPE[request.form['options']], email, password))
+        cursor.execute('SELECT user_id FROM users where ROWID=?', (cursor.lastrowid,))
+        user_id = cursor.fetchone().get('user_id')
+        session_id = open_session(user_id)
         conn.commit()
-        return redirect(url_for('login'))
+        resp = redirect(url_for('login'))
+        resp.set_cookie('s_id', str(session_id))
+        return resp
 
 
 @app.route('/club/<club_id>')

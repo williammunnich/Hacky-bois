@@ -12,13 +12,11 @@
 
 <head>
    <title>Hacky Bois</title>
-   <script src="../script/main.js"></script>
-   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
+{#   <script src="../script/main.js"></script>#}
+   <script src={{ url_for('static', filename='script/main.js') }}></script>
+   <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
    <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
-
-
-
 <body>
 
 <!--
@@ -47,17 +45,12 @@
   <input type="submit" value="Search">
   <br><br>
 </form>
-
 <div class="tab1">
-
   <button class="tablinks" onclick="openPage1(event, 'All')">All</button>
   <button class="tab1links" onclick="openPage1(event, 'New')">New</button>
   <button class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
   <button class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
-
 </div>
-
-
 <div id="New" class="tab1content">
   <h3>New</h3>
   {% for new in new_offers %}
@@ -65,7 +58,6 @@
   <br>
   {% endfor %}
 </div>
-
 <div id="Recommended" class="tab1content">
   <h3>Recommended</h3>
   {% for recommended in recommended_businesses %}
@@ -89,9 +81,5 @@
   <br>
   {% endfor %}
 </div>
-
-
-
-
 </body>
 </html>
