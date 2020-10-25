@@ -24,6 +24,14 @@ def create_db():
     password varchar,
     unique (email, account_type)
 );
+create table if not exists sessions
+(
+    session_id integer
+        primary key autoincrement,
+    user_id    integer,
+    open       integer,
+    unique (session_id, user_id)
+);
 """
     sqlite3.connect(DATABASE).execute(sql)
 
