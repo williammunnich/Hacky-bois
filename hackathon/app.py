@@ -17,14 +17,13 @@ ACCOUNT_TYPE = {
 
 
 def create_db():
-    sql1 = """CREATE TABLE IF NOT EXISTS users (
+    sql = """CREATE TABLE IF NOT EXISTS users (
     user_id integer PRIMARY KEY AUTOINCREMENT,
     account_type int not null,
     email varchar,
     password varchar,
     unique (email, account_type)
-);"""
-    sql2 = """
+);
 create table if not exists sessions
 (
     session_id integer
@@ -34,9 +33,7 @@ create table if not exists sessions
     unique (session_id, user_id)
 );
 """
-    sqlite3.connect(DATABASE).execute(sql1)
-    sqlite3.connect(DATABASE).execute(sql2)
-    
+    sqlite3.connect(DATABASE).executemany(sql)
 
 
 create_db()
