@@ -12,7 +12,7 @@
 
 <head>
    <title>Hacky Bois</title>
-{#   <script src="../script/main.js"></script>#}
+ <script src="../script/main.js"></script>
    <script src={{ url_for('static', filename='script/main.js') }}></script>
    <style href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"></style>
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,51 +35,69 @@
   <br><br>
 </form>
 -->
-<div class="image-wrapper">
-   <img src=" {{ profile_picture }}" />
+
+<div class="float-right">
+  <form action="/logout" class="needs-validation" method="post" novalidate>
+    <button type="submit" class="btn btn-dark btn-lg right">Logout</button>
+  </form>
 </div>
-<h3>{{organization_name}}</h3>
+
+<div  class="image-wrapper" style="text-align:center;" >
+  <img src="../images/prof2.jpg" class="img-thumbnail" style="width:20%; text-align:center;" />
+</div>
+
+<div class="jumbotron text-center">
+<h3>Animal Rights Club</h3>
+<br><br>
 <h3>Search Offers</h3>
+
 <form action="http://localhost:8080" method="POST">
   <input type="text" id="search" name="search">
-  <input type="submit" value="Search">
+  <input type="submit" class="btn btn-info"  value="Search">
   <br><br>
 </form>
-<div class="tab1">
-  <button class="tablinks" onclick="openPage1(event, 'All')">All</button>
-  <button class="tab1links" onclick="openPage1(event, 'New')">New</button>
-  <button class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
-  <button class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
 </div>
+
+
+<div style="text-align:center;">
+<div class="tab1">
+  <button class="btn btn-info" class="tablinks"  onclick="openPage1(event, 'All')">All</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'New')">New</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Recommended')">Recommended</button>
+  <button class="btn btn-info" class="tab1links" onclick="openPage1(event, 'Pending')">Pending</button>
+</div>
+
 <div id="New" class="tab1content">
   <h3>New</h3>
-  {% for new in new_offers %}
-  <button><a href= "{{ offer_link }}">{{ new }}</a></button>
+
+  <button class="btn btn-info"><a href= "company_about.html" style="color:white;">ARFA: We have a grant available for any person or group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
   <br>
-  {% endfor %}
+
 </div>
 <div id="Recommended" class="tab1content">
   <h3>Recommended</h3>
-  {% for recommended in recommended_businesses %}
-  <button><a href="{{ offer_link }}">{{ recommended }}</a></button>
+  <button class="btn btn-info"><a href= "#" style="color:white;">Temp Agency: Volunteer with us next week at our work fair for a chance to win a speaker</a></button>
   <br>
-  {% endfor %}
 </div>
 
 <div id="Pending" class="tab1content">
   <h3>Pending</h3>
-  {% for pending in pending_businesses %}
-  <button><a href="{{ offer_link }}">{{ pending }}</a></button>
+  <button class="btn btn-info"><a href= "#" style="color:white;">We have a grant available for any person or group that can implement a plan to resist  Evil Corp's "Kill Animal Mandate".</a></button>
   <br>
-  {% endfor %}
 </div>
 
 <div id="All" class="tab1content">
   <h3>All</h3>
-  {% for business in businesses %}
-  <button><a href="{{ offer_link }}">{{ business }}</a></button>
+  <button class="btn btn-info"><a href= "#" style="color:white;">ARFA: We have a grant available for any person or group that can implement a plan to resist Evil Corp's "Kill Animal Mandate".</a></button>
   <br>
-  {% endfor %}
+  <br>
+  <button class="btn btn-info"><a href= "#" style="color:white;">Temp Agency: Volunteer with us next week at our work fair for a chance to win a speaker</a></button>
+  <br>
+  <br>
+  <button class="btn btn-info"><a href= "company_about.html" style="color:white;">We have a grant available for any person or group that can implement a plan to resist Evil Corp's kill animal bill.</a></button>
+  <br>
+  <br>
+</div>
 </div>
 </body>
 </html>
