@@ -10,6 +10,11 @@ app = Flask(__name__)
 
 DATABASE = Path('database.db')
 
+ACCOUNT_TYPE = {
+    'club': 2,
+    'business': 1
+}
+
 
 def create_db():
     sql = """CREATE TABLE IF NOT EXISTS users (
@@ -61,6 +66,7 @@ def open_session(u_id):
         cursor.execute('INSERT INTO sessions (user_id, open) VALUES (?, true)', (u_id,))
     else:
         cursor.execute('UPDATE sessions SET open=true WHERE user_id=?', (u_id,))
+    conn.commit()
     return cursor.execute('SELECT session_id FROM sessions where user_id=?', (u_id,)).fetchone()
 
 
@@ -86,6 +92,7 @@ def close_session(u_id):
     conn = get_db()
     cursor = conn.cursor()
     cursor.execute('UPDATE sessions SET open=false WHERE user_id=?', (u_id,))
+    conn.commit()
 
 
 def get_user_type(session_id):
@@ -112,7 +119,6 @@ def get_user_id(username, password):
         return res['user_id']
 
 
-
 @app.route('/')
 def main_page():
     # if user has valid cookie, redirect to main page
@@ -126,7 +132,7 @@ def main_page():
     account_type = get_user_type(session_id)
     if account_type == 1:
         return make_response(render_template('business.html'))
-    else:
+    elif account_type == 2:
         return make_response(render_template('club.html'))
     # return render_template('login.html')
 
@@ -161,20 +167,26 @@ def create_user():
     password = request.form['password']
     conn = get_db()
     cursor = conn.cursor()
-    res = cursor.execute('SELECT * FROM users WHERE email=?', (email,))
+
+    res = cursor.execute('SELECT * FROM users WHERE email=?', (email,)).fetchone()
+    print(res)
     if res:
         flash('User already exists', 'create')
         resp = redirect(url_for('login'))
         session['exists error'] = True
         return resp
     else:
-        cursor.execute('INSERT INTO users (email, password) values (?,?)')
-        return redirect('/')
+        print(ACCOUNT_TYPE[request.form['options']])
+        cursor.execute('INSERT INTO users (account_type, email, password) values (?, ?,?)',
+                       (ACCOUNT_TYPE[request.form['options']], email, password))
+        conn.commit()
+        return redirect(url_for('login'))
 
 
 @app.route('/club/<club_id>')
 def get_club(club_id):
     return make_response(render_template('club.html'))
+
 
 @app.route('/company/<company_id>')
 def get_company(company_id):
