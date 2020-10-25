@@ -20,8 +20,10 @@
 
 <body>
 
-
-  <h3>{{company_name}}</h3>
+  <div class="image-wrapper">
+     <img src=" {{ art_work }}" />
+  </div>
+  <h3>{{ company_name }}</h3>
   <h3>Search Offers</h3>
   <form action="http://localhost:8080" method="POST">
     <input type="text" id="search" name="search">
@@ -88,20 +90,20 @@
   <div id="Current" class="tab2content">
       <h3>Current Offers</h3>
       {% for offer in offers_current %}
-      <button><a href={{offers_current_info}}>{{offer_current}}</a></button>
+      <button><a href="{{ offer_link }}">{{ offer_current }}</a></button>
       <br>
       {% endfor %}
   </div>
 
     <div id="Description" class="tab2content">
       <h3>Description</h3>
-      <p>{{company_description}}</p>
+      <p>{{ company_description }}</p>
     </div>
 
     <div id="Stats" class="tab2content">
       <h3>Stats</h3>
       {% for stat in stats %}
-      <p>{{stat}}</p>
+      <p>{{ stat }}</p>
       <br>
       {% endfor %}
     </div>
@@ -109,7 +111,7 @@
     <div id="Pending2" class="tab2content">
       <h3>Pending</h3>
       {% for pending in pendings %}
-      <p>{{stat}}</p>
+      <button><a href="{{ offer_link }}">{{ pending }}</a></button>
       <br>
       {% endfor %}
     </div>
@@ -120,7 +122,7 @@
   <div id="Dashboard" class="tab1content">
     <h3>All</h3>
     {% for offer in offers %}
-    <button><a href={{offers_current_info}}>{{offer}}</a></button>
+    <button><a href={{offers_current_info}}>{{ offer }}</a></button>
     <br>
     {% endfor %}
 
@@ -129,7 +131,7 @@
 
   <div id="Current" class="tab1content">
     {% for the_current in currents %}
-    <button><a href={{offers_current_info}}>{{the_current}}</a></button>
+    <button><a href={{offers_current_info}}>{{ the_current }}</a></button>
     <br>
     {% endfor %}
   </div>
@@ -137,7 +139,7 @@
   <div id="Completed" class="tab1content">
     <h3>Completed Offers</h3>
     {% for complete in completed %}
-    <button><a href={{offers_current_info}}>{{complete}}</a></button>
+    <button><a href={{offers_current_info}}>{{ complete }}</a></button>
     <br>
     {% endfor %}
   </div>

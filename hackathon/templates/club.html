@@ -3,6 +3,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -11,8 +12,8 @@
 
 <head>
    <title>Hacky Bois</title>
-   <script src="script/main.js"></script>
-   <style href="style/style.css" rel="stylesheet" type="text/css"></style>
+   <script src="../script/main.js"></script>
+   <style href="../css/style.css" rel="stylesheet" type="text/css"></style>
    <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
 
@@ -36,7 +37,16 @@
   <br><br>
 </form>
 -->
-
+<div class="image-wrapper">
+   <img src=" {{ profile_picture }}" />
+</div>
+<h3>{{club_name}}</h3>
+<h3>Search Offers</h3>
+<form action="http://localhost:8080" method="POST">
+  <input type="text" id="search" name="search">
+  <input type="submit" value="Search">
+  <br><br>
+</form>
 
 <div class="tab1">
 
@@ -50,22 +60,34 @@
 
 <div id="New" class="tab1content">
   <h3>New</h3>
-  <p>This will be filled with the new offers from businesses</p>
+  {% for new in new_offers %}
+  <button><a href= "{{ offer_link }}">{{ new }}</a></button>
+  <br>
+  {% endfor %}
 </div>
 
 <div id="Recommended" class="tab1content">
   <h3>Recommended</h3>
-  <p>This will be filled with the recommended offers from businesses</p>
+  {% for recommended in recommended_businesses %}
+  <button><a href="{{ offer_link }}">{{ recommended }}</a></button>
+  <br>
+  {% endfor %}
 </div>
 
 <div id="Pending" class="tab1content">
   <h3>Pending</h3>
-  <p>This will be filled with pending offers from businesses</p>
+  {% for pending in pending_businesses %}
+  <button><a href="{{ offer_link }}">{{ pending }}</a></button>
+  <br>
+  {% endfor %}
 </div>
 
 <div id="All" class="tab1content">
   <h3>All</h3>
-  <p>This will be filled with all the offers from businesses</p>
+  {% for business in businesses %}
+  <button><a href="{{ offer_link }}">{{ business }}</a></button>
+  <br>
+  {% endfor %}
 </div>
 
 
